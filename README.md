@@ -2,6 +2,10 @@
 
 To start with, on the command line run:
 
+`$ sudo npm install gulp-cli -g`
+
+then:
+
 `$ npm i`
 
 then:
