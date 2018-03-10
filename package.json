@@ -1,0 +1,22 @@
+{
+  "name": "wit-happens",
+  "description": "awersome hack24 project",
+  "version": "0.0.1",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.3.2"
+  },
+  "author": "wit-happens",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=5.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^1.0.0",
+    "gulp-sourcemaps": "^2.4.0",
+    "gulp-util": "^3.0.8"
+  }
+}
