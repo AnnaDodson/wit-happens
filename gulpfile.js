@@ -2,10 +2,8 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var concat = require('gulp-concat');
-var gutil = require('gulp-util');
 var minify = require('gulp-minify');
 
 var reload = browserSync.reload;
@@ -33,11 +31,9 @@ gulp.task('js', function() {
 
 gulp.task('sass', function() {
     return gulp.src('./scss/**/*.scss')
-        .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
         }).on('error', sass.logError))
-        .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('./_dist/css'))
         .pipe(browserSync.stream());
 });
