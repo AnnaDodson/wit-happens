@@ -61,6 +61,7 @@ var events = [
   },
      {
     "title" : "new-TV",
+    "speechPrompt" : "Look how big my telly is! Want to watch the game?",
     "question":"Your TV breaks, what do you do?",
     "answerOptions": [
        { name : "first ans", value:  1},
@@ -133,7 +134,7 @@ var events = [
 
    {
     "title" : "credit-card-application",
-    "prompt": "I've got a great cash back credit card from Amex.",
+    "speechPrompt" : "I've got a great cash back credit card from Amex.",
     "question":"Your last two credit card application got declined, what are your next steps?",
     "answerOptions": [
        { name : "A. Apply for an Amex credit card", value:  10},
@@ -170,7 +171,7 @@ var events = [
    {
     "title" : "night-out",
     "question":"You're short of money this month, but you really want to go out and have fun with your mates. What do you do?",
-    "prompt" : "Oh, shame about your boiler breaking down. See you at the big night out on Saturday!",
+    "speechPrompt" : "Oh, shame about your boiler breaking down. See you at the big night out on Saturday!",
     "answerOptions": [
        { name : "A. Skip the big night out, you'll see them all again the week after.", value:  1},
        { name : "B. Go out and delay paying your mobile bill again.", value:  5},
@@ -205,7 +206,7 @@ var events = [
   },
   {
     "title" : "voterReg",
-    "prompt" : "So, you moved house a while ago",
+    "speechPrompt" : "So, you moved house a while ago",
     "question":"Did you register to vote??",
     "answerOptions": [
        { name : "first ans", value:  1},
