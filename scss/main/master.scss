@@ -1,0 +1,60 @@
+body{
+	overflow: hidden;
+}
+
+p,h2,h1,.stat{
+	font-family: 'Erbaum';
+}
+
+h1{
+	color: #203B6F;
+}
+
+#progress-area{
+	img{
+		&.bob{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 4;
+			width: 200px;
+		}
+	}
+}
+
+
+.report{
+	display: none;
+
+	&.show{
+		display: block;
+		text-align: center;
+		padding: 10px;
+	}
+}
+
+p{
+
+	
+	&.speech-bubble {
+		position: relative;
+		background: #000;
+		border-radius: .4em;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 130px;
+			left: 180px;
+			width: 0;
+			height: 0;
+			border: 50px solid transparent;
+			border-top-color: #203B6F;
+			border-bottom: 0;
+			border-left: 0;
+			margin-left: -25px;
+			margin-bottom: -50px;
+		}
+	}
+
+}
