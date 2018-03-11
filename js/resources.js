@@ -26,7 +26,7 @@ function Answer(t, m, ti, ml){
 var events = [
    {
     "title" : "new-car",
-    "prompt" : "Hey! Look at my fancy new car!",
+    "speechPrompt" : "Hey! Look at my fancy new car!",
     "question":"You really like Jones' new car and want to stop taking the bus. What do you do?",
     "answerOptions": [
        { name : "A. Spend £1000 on buying a second hand car outright", value:  1},

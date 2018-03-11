@@ -25,8 +25,9 @@ function setScoresUI(month, creditScore, moneyTotal){
  }
 
 //set questions
-function setQuestionUI(q){
+function setQuestionUI(q, p){
   $('#question').text(q);
+  $('#prompt').text(p);
 }
 
 //set user options
@@ -34,7 +35,7 @@ function setAnswersUI(a){
   $('#answers').empty();
   var output = "";
   for (var i = 0; i < a.length; i++){
-    var html = "<span><input type='radio' name='answer' data-id='" + i + "' value='" + a[i].name + "'>" + a[i].name + "</span>";
+    var html = "<input type='radio' name='answer' data-id='" + i + "' value='" + a[i].name + "'>" + a[i].name;
     output = output + html;
   }
   $('#answers').append(output);
@@ -48,7 +49,7 @@ $('#answers').change(function(){
 
 function updateUI(){
   var question = score.getQuestion();
-  setQuestionUI(question.question);
+  setQuestionUI(question.question, question.speechPrompt);
 
   setScoresUI( score.getMonths(), score.getScore(), money.getMoney() );
   setAnswersUI( question.answerOptions );
