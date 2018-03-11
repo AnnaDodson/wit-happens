@@ -31,6 +31,7 @@ function onAnswer(ans){
   
   //get the total money for the answers
   var monthlyOutgoings = getMonthlyExtraCosts(); // + monthly outgoings (bills etc)
+  var o = getMonthlyOutgoings();
   //Get the expenditures to take away from money total
   //Get the monthly costs to take away from the money total
   money.decreaseMoney(monthlyOutgoings);
@@ -40,5 +41,11 @@ function onAnswer(ans){
 
   //resume the tick
 }
+
+$(function() {
+    var e = $.Event('keypress');
+    e.which = 65; // Character 'A'
+    $('item').trigger(e);
+});
 
 gameStart();

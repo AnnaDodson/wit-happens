@@ -75,6 +75,19 @@ function getMonthlyExtraCosts(){
   return moneyLeftTotal;
 }
 
+function getMonthlyOutgoings(){
+  for (var cost in outgoings) {
+    if (outgoings.hasOwnProperty(cost)) {
+      console.log(cost + " -> " + outgoings[cost]);
+    }
+  }
+  return 1;
+}
+
+function getMonthlyIncomings() {
+
+}
+
 function setAnswer(ans){
   var question = Score.getQuestion()
   var total = question.total();
