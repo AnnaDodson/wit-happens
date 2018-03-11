@@ -4,6 +4,12 @@ var isPaused = false;
 var money;
 var score;
 
+
+function endGame(){
+  $('#game-board').show("show");
+  $('#score-board').show("slow");
+}
+
 //set scores
 function setScoresUI(month, creditScore, moneyTotal){
   $('#stat-day').text(month);
@@ -86,7 +92,7 @@ function onAnswerChange(ans){
   //update the scores
   score.increaseScore(30);
 
-  if (!score.isLastQuestion()){
+  if (score.isLastQuestion() == false){
     //go to the next question
     score.nextQuestion();
  
@@ -97,9 +103,8 @@ function onAnswerChange(ans){
     isPaused = false;
   }
   else {
-    //endGame();
+    endGame();
     clearInterval(gameTimer);
-    console.log("end");
   }
 
 }

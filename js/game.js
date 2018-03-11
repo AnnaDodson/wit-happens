@@ -17,10 +17,13 @@ function Score(q){
     questionNumber = questionNumber + 1;
   };
   this.isLastQuestion = function(){
-console.log(  questions.length() );
-
-    return questionNumber < questions.length() ? false : true;
-  }
+    if (questionNumber + 1 < questions.length ){
+      return false;
+    }
+    else {
+      return true;
+    }
+  };
   this.getScore = function(){
     return score;
   };
@@ -61,10 +64,10 @@ function Money(m){
 function getMonthlyExtraCosts(){
   var moneyLeftTotal = 0;
   var answers = score.getAnswers();
-  var questions = score.getQuestions();
+  var quests = score.getQuestions();
   for (var i = 0; i < answers.length; i++){
       answer = answers[i];
-      questionCalculation = questions[i];
+      questionCalculation = quests[i];
       var monthlyPaid = answer.getMoneyLeftToPay();
       //update the time to take away the montly paid
       var timeRemaining = (answer.getTime() - score.getMonths());
