@@ -27,10 +27,25 @@ var events = [
 		"answer": [1,5,10],
 		"price": [1000,5000,10000],
 		"upfront": [1000,0,0],
-		"interest": [0,1.05,1.1],
+		"interest": [0,0.05,0.1], //interest per year
 		"calculation":	function(a, t){
 				return a - 10;
 			},
+
+    "monthlyRepayment": // input: answer element, return monthly repayment
+        function(a){
+
+                if (event.newCar.interest[a] != 0) {
+                        i = event.newCar.interest[a]/12.;
+                        n = event.newCar.paymentDuration;
+                        D = (((1+i)**n)-1)/(i*(1+i)**n);
+                        A = event.newCar.price[a]-event.newCar.upfront[a];
+                        P = A/D
+                }
+                else {P = 0}
+
+                return  P;
+        },
 		"paymentDuration": 36, //months
 		"notes":["yay","boo","really boo"],
     "answer" : Answer
