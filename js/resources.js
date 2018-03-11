@@ -111,3 +111,20 @@ var outgoings = {
 var incomings = {
   wages : 1000
 };
+
+var challenges = {
+  positive : [{
+    payRise : 30,
+    monthly : true,
+  },{
+    inheritance : 300,
+    monthly : false
+  }],
+  negative : [{
+    payCut : 30,
+    monthly: true,
+  },{
+    boilerBroke : 200,
+    monthly : false
+  }],
+};

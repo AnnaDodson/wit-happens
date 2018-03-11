@@ -16,6 +16,11 @@ function Score(q){
   this.nextQuestion = function(){
     questionNumber = questionNumber + 1;
   };
+  this.isLastQuestion = function(){
+console.log(  questions.length() );
+
+    return questionNumber < questions.length() ? false : true;
+  }
   this.getScore = function(){
     return score;
   };
@@ -80,7 +85,6 @@ function getMonthlyOutgoings(){
       monthlyOutgoing = monthlyOutgoing + outgoings[cost];
     }
   }
-console.log("outgoing: " + monthlyOutgoing);
   return monthlyOutgoing;
 }
 

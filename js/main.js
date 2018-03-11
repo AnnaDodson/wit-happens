@@ -71,7 +71,6 @@ function onAnswerChange(ans){
   //pause the tick
   isPaused = true;
 
-
   //create the asnwer and add to array
   var answer = setAnswer(ans)
   score.addAnswer(answer);
@@ -87,15 +86,22 @@ function onAnswerChange(ans){
   //update the scores
   score.increaseScore(30);
 
-  //go to the next question
-  score.nextQuestion();
+  if (!score.isLastQuestion()){
+    //go to the next question
+    score.nextQuestion();
+ 
+    //update the scoreboard
+    updateUI();
+ 
+    //resume the tick
+    isPaused = false;
+  }
+  else {
+    //endGame();
+    clearInterval(gameTimer);
+    console.log("end");
+  }
 
-
-  //update the scoreboard
-  updateUI();
-
-  //resume the tick
-  isPaused = false;
 }
 
 $(document).ready(function(){
