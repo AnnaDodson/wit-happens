@@ -51,3 +51,17 @@ var events = [
 	}
 ];
 
+var outgoings = {
+  rent : 80,
+  water : 20,
+  gas : 20,
+  electric : 30,
+  demotion : 10,
+  newRoof : 30
+};
+
+var incomings = {
+  wages : 80,
+  newJob : 20,
+  promotion : 40
+};
