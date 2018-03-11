@@ -26,7 +26,7 @@ function Answer(t, m, ti, ml){
 var events = [
 	 {
     "title" : "new-car",
-		"speechPrompt" : "Hey! Look at my fancy new car!"
+		"speechPrompt" : "Hey! Look at my fancy new car!",
 		"question":"You really like Jones' new car and want to stop taking the bus. What do you do?",
 		"answerOptions": [
        { name : "A. Spend £1000 on buying a second hand car outright", value:  1},
@@ -136,7 +136,7 @@ var events = [
 
 	 {
     "title" : "credit-card-application",
-		"speechPrompt": "I've got a great cash back credit card from Amex."
+		"speechPrompt": "I've got a great cash back credit card from Amex.",
 		"question":"Your last two credit card application got declined, what are your next steps?",
 		"answerOptions": [
        { name : "A. Apply for an Amex credit card", value:  10},
@@ -209,7 +209,7 @@ var events = [
 	},
   {
     "title" : "voterReg",
-    "speechPrompt" : "So, you moved house a while ago"
+    "speechPrompt" : "So, you moved house a while ago",
     "question":"Did you register to vote??",
     "answerOptions": [
        { name : "first ans", value:  1},
