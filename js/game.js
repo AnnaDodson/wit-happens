@@ -80,6 +80,7 @@ function getMonthlyOutgoings(){
       monthlyOutgoing = monthlyOutgoing + outgoings[cost];
     }
   }
+console.log("outgoing: " + monthlyOutgoing);
   return monthlyOutgoing;
 }
 

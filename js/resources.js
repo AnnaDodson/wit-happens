@@ -109,5 +109,5 @@ var outgoings = {
 };
 
 var incomings = {
-  wages : 1600
+  wages : 1000
 };

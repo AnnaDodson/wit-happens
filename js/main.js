@@ -37,8 +37,6 @@ function updateUI(){
   var question = score.getQuestion();
   setQuestionUI(question.question);
 
-console.log(money.getMoney());
-
   setScoresUI( score.getMonths(), score.getScore(), money.getMoney() );
   setAnswersUI( question.answerOptions );
 }
@@ -80,7 +78,6 @@ function onAnswerChange(ans){
   
   //get the total money for the answers and add to monthly expeditures
   var monthlyOutgoings = (getMonthlyExtraCosts() + getMonthlyOutgoings());
-console.log(monthlyOutgoings);
   money.decreaseMoney(monthlyOutgoings);
 
   //Get the monthly incomings to add into the money pot
