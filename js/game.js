@@ -39,27 +39,19 @@ function Score(q){
   };
 }
 
-function Money(){
-  money = 100;
+function Money(m){
+  moneyTotal = m;
   outgoings = 80;
   this.getMoney = function(){
-    return money;
+    return moneyTotal;
   };
   this.decreaseMoney = function(m){
-    money = money - m;
+    moneyTotal = moneyTotal - m;
   };
   this.increaseMoney = function(m){
-    money = money + m;
+    moneyTotal = moneyTotal + m;
   };
 };
-
-function startUI(){
-  console.log("starting the ui");
-}
-
-function updateUI(){
-  console.log("updating the ui");
-}
 
 function getMonthlyExtraCosts(){
   var moneyLeftTotal = 0;
@@ -69,31 +61,54 @@ function getMonthlyExtraCosts(){
       answer = answers[i];
       questionCalculation = questions[i];
       var monthlyPaid = answer.getMoneyLeftToPay();
+      //update the time to take away the montly paid
+      var timeRemaining = (answer.getTime() - score.getMonths());
       answer.setMoneyLeftToPay(monthlyPaid);
       moneyLeftTotal = moneyLeftTotal + questionCalculation.calculation(monthlyPaid, timeRemaining);
   }
   return moneyLeftTotal;
 }
 
+//get how much money comes out each month
 function getMonthlyOutgoings(){
+  var monthlyOutgoing = 0;
   for (var cost in outgoings) {
     if (outgoings.hasOwnProperty(cost)) {
       console.log(cost + " -> " + outgoings[cost]);
+      monthlyOutgoing = monthlyOutgoing + outgoings[cost];
     }
   }
-  return 1;
+  return monthlyOutgoing;
 }
 
+//get how much money comes in each month
 function getMonthlyIncomings() {
-
+  var monthlyIncomings = 0;
+  for (var cost in incomings) {
+    if (incomings.hasOwnProperty(cost)) {
+      console.log(cost + " -> " + incomings[cost]);
+      monthlyIncomings = monthlyIncomings + incomings[cost];
+    }
+  }
+  return monthlyIncomings;
 }
 
+function updateMoneys(){
+  money.decreaseMoney(getMonthlyOutgoings());
+  money.increaseMoney(getMonthlyIncomings());
+}
+
+//Gets the answer obj and creates it
 function setAnswer(ans){
-  var question = Score.getQuestion()
-  var total = question.total();
-  var monthlyCosts = question.monthlyCost();
-  var time = question.time();
-  var moneyLeft = question.moneyLeft();
-  var answer = new score.getAnswer(total, monthlyCost, time, moneyLeft);
+  var question = score.getQuestion();
+  var total = question.getPrice(ans);
+  var monthlyCosts = Math.round(question.monthlyRepayment(ans));
+  var time = question.paymentDuration;
+  var moneyLeft = Math.round(question.calculation(monthlyCosts, time));
+
+  var answer = new question.answer(total, monthlyCosts, time, moneyLeft);
+
+console.log(answer);
+
   return answer;
 }

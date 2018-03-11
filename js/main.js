@@ -1,14 +1,14 @@
-var time = 3000;
-var myVar;
-
+var time = 9000;
+var gameTimer;
+var isPaused = false;
 var money;
 var score;
 
 //set scores
-function setScoresUI(scores){
-  $('#stat-day').text(scores.score);
-  $('#money').text(scores.money);
-  $('#score').text(scores.score);
+function setScoresUI(month, creditScore, money){
+  $('#stat-day').text(month);
+  $('#money').text(money);
+  $('#score').text(creditScore);
  }
 
 //set questions
@@ -30,58 +30,72 @@ function setAnswersUI(a){
 //get user input
 $('#answers').change(function(){
   var value =  $("input[name='answer']:checked").attr("data-id");
-  console.log(value);
+  onAnswerChange(value);
 });
 
+function updateUI(){
+  var nextQuestion = score.getQuestion();
+  setQuestionUI(nextQuestion.question);
+  setScoresUI( score.getMonths(), score.getScore(), money.getMoney() );
+  setAnswersUI( nextQuestion.answerOptions );
+}
 
 function gameTick() {
     console.log("tick");
+    //update the month ++
+    score.increaseMonth();
+
+    //update monthly bits
+       updateMoneys();
+       //get extra purchases costs
+       getMonthlyExtraCosts();
+ 
     //update the ui updates the money
     updateUI();
 }
 
 function gameStart() {
-    money = new Money();
-    score = new Score(10);
-    startUI();
-    myVar = setInterval(function(){
-      gameTick(money, score)}, time);
+    money = new Money(100);
+    score = new Score(0);
+    updateUI()
+    gameTimer = setInterval(function(){
+       if(!isPaused) {
+         gameTick();
+       }
+     }, time);
 }
 
-//start loop
-//start ticker
-//set question
-//on answer, pause ticker
-//update totals
-//finsish loop
-function onAnswer(ans){
+function onAnswerChange(ans){
   //pause the tick
+  isPaused = true;
+
+
+  //create the asnwer and add to array
   var answer = setAnswer(ans)
-  score.answers.addAnswer(answer);
+  score.addAnswer(answer);
   
-  //get the total money for the answers
-  var monthlyOutgoings = getMonthlyExtraCosts(); // + monthly outgoings (bills etc)
-  var o = getMonthlyOutgoings();
-  //Get the expenditures to take away from money total
-  //Get the monthly costs to take away from the money total
+  //get the total money for the answers and add to monthly expeditures
+  var monthlyOutgoings = (getMonthlyExtraCosts() + getMonthlyOutgoings());
   money.decreaseMoney(monthlyOutgoings);
 
   //Get the monthly incomings to add into the money pot
-  //var monthlyIncomings = getMonthlyIncomings();
+  var monthlyIncomings = getMonthlyIncomings();
+  money.increaseMoney(monthlyOutgoings);
+
+  //update the scores
+  score.increaseScore(30);
+
+  //go to the next question
+  score.nextQuestion();
+
+
+  //update the scoreboard
+  updateUI();
 
   //resume the tick
+  isPaused = false;
 }
 
-$(function() {
-    var e = $.Event('keypress');
-    e.which = 65; // Character 'A'
-    $('item').trigger(e);
-});
-
 $(document).ready(function(){
-  setQuestionUI();
-  setScoresUI({score: 30, money: 100});
-  setQuestionUI("test question here");
-  setAnswersUI([ { name : "one"},{ name: "two"},{ name : "three" } ]);
+  gameStart();
 });
-//gameStart();
