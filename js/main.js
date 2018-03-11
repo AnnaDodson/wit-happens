@@ -4,9 +4,16 @@ var myVar;
 var money;
 var score;
 
+//set scores
+function setScoresUI(scores){
+  $('#stat-day').text(scores.score);
+  $('#money').text(scores.money);
+  $('#score').text(scores.score);
+ }
+
 //set questions
 function setQuestionUI(q){
-  $('#money').text("here");
+  $('#question').text(q);
 }
 
 //set user options
@@ -73,6 +80,8 @@ $(function() {
 
 $(document).ready(function(){
   setQuestionUI();
+  setScoresUI({score: 30, money: 100});
+  setQuestionUI("test question here");
   setAnswersUI([ { name : "one"},{ name: "two"},{ name : "three" } ]);
 });
 //gameStart();
