@@ -36,7 +36,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>LoaniPays</title>
+    <title>WiT Happens</title>
     <link rel="stylesheet" href="css/style.css"/>
 <style>
 /* Center the loader */
@@ -98,12 +98,16 @@
 
 <div style="display:none;" id="myDiv" class="animate-bottom">
   	<h1>Hello WiT Happens</h1>
-    <p>Let's try and buy a house...</p>
+    <p class="question">Let's try and buy a house...</p>
       <div id="journey">
       <div id="stats-area">
         <div class="stat">Month : <span id="stat-day" class="stat-value"></span></div>
-        <div class="stat">Money Pot : <span id="stat-distance" class="stat-value"></span></div>
-        <div class="stat">Credit Score : <span id="stat-crew" class="stat-value"></span></div>
+        <div class="stat">Money Pot : <span id="money" class="stat-value"></span></div>
+        <div class="stat">Credit Score : <span id="score" class="stat-value"></span></div>
+      </div>
+      <div>
+        <form id="answers" class="answers">
+        </form> 
       </div>
       <div id="progress-area">
         <img  src="images/bob.jpg" />
@@ -112,18 +116,24 @@
     </div>
 </div>
 
+
 <script>
 var myVar;
 
 function myFunction() {
     myVar = setTimeout(showPage, 3000);
 }
-
 function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
 }
 </script>
+
+<script src="js/library/jquery-3.3.1.min.js"></script>
+<script src="js/game.js"></script>
+<script src="js/resources.js"></script>
+<script src="js/main.js"></script>
+
 
 </body>
 </html>

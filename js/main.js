@@ -4,6 +4,29 @@ var myVar;
 var money;
 var score;
 
+//set questions
+function setQuestionUI(q){
+  $('#money').text("here");
+}
+
+//set user options
+function setAnswersUI(a){
+  $('#answers').empty();
+  var output = "";
+  for (var i = 0; i < a.length; i++){
+    var html = "<input type='radio' name='answer' value='" + a[i] + "'>" + a[i] + "<br>";
+    output = output + html;
+  }
+  $('#answers').append(output);
+}
+
+//get user input
+$('#answers').change(function(){
+  var value =  $("input[name='answer']:checked").val();
+  console.log(value);
+});
+
+
 function gameTick() {
     console.log("tick");
     //update the ui updates the money
@@ -48,4 +71,8 @@ $(function() {
     $('item').trigger(e);
 });
 
-gameStart();
+$(document).ready(function(){
+  setQuestionUI();
+  setAnswersUI(["one", "two", "three"]);
+});
+//gameStart();
