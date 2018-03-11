@@ -213,7 +213,7 @@ var events = [
     "question":"Did you register to vote??",
     "answerOptions": [
        { name : "first ans", value:  1},
-       { name : "second ans", value:  5},
+       { name : "second ans", value:  5}],
     "price": [0,0],
     "getPrice": function(i){
       return this.price[i];
