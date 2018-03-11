@@ -97,16 +97,17 @@ var events = [
 ];
 
 var outgoings = {
-  rent : 80,
-  water : 20,
-  gas : 20,
-  electric : 30,
-  demotion : 10,
-  newRoof : 30
+  rent : 500,
+  water : 12,
+  gas : 18,
+  electric : 20,
+  gym : 16,
+  travel : 50,
+  mobile : 18,
+  foodAtHome : 200,
+  eatingOut : 120,
 };
 
 var incomings = {
-  wages : 80,
-  newJob : 20,
-  promotion : 40
+  wages : 1600
 };

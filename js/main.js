@@ -5,9 +5,9 @@ var money;
 var score;
 
 //set scores
-function setScoresUI(month, creditScore, money){
+function setScoresUI(month, creditScore, moneyTotal){
   $('#stat-day').text(month);
-  $('#money').text(money);
+  $('#money').text(moneyTotal);
   $('#score').text(creditScore);
  }
 
@@ -34,10 +34,13 @@ $('#answers').change(function(){
 });
 
 function updateUI(){
-  var nextQuestion = score.getQuestion();
-  setQuestionUI(nextQuestion.question);
+  var question = score.getQuestion();
+  setQuestionUI(question.question);
+
+console.log(money.getMoney());
+
   setScoresUI( score.getMonths(), score.getScore(), money.getMoney() );
-  setAnswersUI( nextQuestion.answerOptions );
+  setAnswersUI( question.answerOptions );
 }
 
 function gameTick() {
@@ -46,17 +49,18 @@ function gameTick() {
     score.increaseMonth();
 
     //update monthly bits
-       updateMoneys();
-       //get extra purchases costs
-       getMonthlyExtraCosts();
+    updateMoneys();
+    //get extra purchases costs
+    getMonthlyExtraCosts();
  
     //update the ui updates the money
     updateUI();
 }
 
 function gameStart() {
-    money = new Money(100);
+    money = new Money(0);
     score = new Score(0);
+    updateMoneys();
     updateUI()
     gameTimer = setInterval(function(){
        if(!isPaused) {
@@ -76,6 +80,7 @@ function onAnswerChange(ans){
   
   //get the total money for the answers and add to monthly expeditures
   var monthlyOutgoings = (getMonthlyExtraCosts() + getMonthlyOutgoings());
+console.log(monthlyOutgoings);
   money.decreaseMoney(monthlyOutgoings);
 
   //Get the monthly incomings to add into the money pot

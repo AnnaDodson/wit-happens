@@ -40,19 +40,19 @@ function Score(q){
 }
 
 function Money(m){
-  moneyTotal = m;
-  outgoings = 80;
+  moneyTotalAmount = 0;
   this.getMoney = function(){
-    return moneyTotal;
+    return moneyTotalAmount;
   };
   this.decreaseMoney = function(m){
-    moneyTotal = moneyTotal - m;
+    moneyTotalAmount = moneyTotalAmount - m;
   };
   this.increaseMoney = function(m){
-    moneyTotal = moneyTotal + m;
+    moneyTotalAmount = moneyTotalAmount + m;
   };
 };
 
+//get the extra costs set by the user
 function getMonthlyExtraCosts(){
   var moneyLeftTotal = 0;
   var answers = score.getAnswers();
@@ -63,8 +63,10 @@ function getMonthlyExtraCosts(){
       var monthlyPaid = answer.getMoneyLeftToPay();
       //update the time to take away the montly paid
       var timeRemaining = (answer.getTime() - score.getMonths());
-      answer.setMoneyLeftToPay(monthlyPaid);
-      moneyLeftTotal = moneyLeftTotal + questionCalculation.calculation(monthlyPaid, timeRemaining);
+      if (timeRemaining > 0){
+        answer.setMoneyLeftToPay(monthlyPaid);
+        moneyLeftTotal = moneyLeftTotal + questionCalculation.calculation(monthlyPaid, timeRemaining);
+      }
   }
   return moneyLeftTotal;
 }
@@ -93,9 +95,21 @@ function getMonthlyIncomings() {
   return monthlyIncomings;
 }
 
+//get how much extra money comes in each month
+function getExtraMonthlyIncome(){
+  return 0;
+}
+
+function setChallenge(){
+  //get challenge from the list
+  //good or bad?
+  //add to increase or decrease
+  //reset
+}
+
 function updateMoneys(){
-  money.decreaseMoney(getMonthlyOutgoings());
-  money.increaseMoney(getMonthlyIncomings());
+  money.decreaseMoney(  getMonthlyOutgoings() + getMonthlyExtraCosts() );
+  money.increaseMoney( getMonthlyIncomings() + getExtraMonthlyIncome() );
 }
 
 //Gets the answer obj and creates it
@@ -105,10 +119,7 @@ function setAnswer(ans){
   var monthlyCosts = Math.round(question.monthlyRepayment(ans));
   var time = question.paymentDuration;
   var moneyLeft = Math.round(question.calculation(monthlyCosts, time));
-
   var answer = new question.answer(total, monthlyCosts, time, moneyLeft);
-
-console.log(answer);
 
   return answer;
 }
