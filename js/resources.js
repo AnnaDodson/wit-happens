@@ -59,6 +59,41 @@ var events = [
 		"notes":["yay","boo","really boo"],
     "answer" : Answer
 	},
+     {
+    "title" : "new-TV",
+    "question":"Your TV breaks, what do you do?",
+    "answerOptions": [
+       { name : "first ans", value:  1},
+       { name : "second ans", value:  5},
+       { name : "third ans", value:  10}],
+    "price": [100,350,750],
+    "getPrice": function(i){
+      return this.price[i];
+    },
+    "upfront": [100,100,100],
+    "interest": [0,0.075,0.15], //interest per year
+    "calculation":  function(a, t){
+        return a - 10;
+      },
+
+    "monthlyRepayment": // input: answer element, return monthly repayment
+        function(a){
+
+                if (this.interest[a] != 0) {
+                        i = this.interest[a]/12.;
+                        n = this.paymentDuration;
+                        D = (((1+i)**n)-1)/(i*(1+i)**n);
+                        A = this.price[a]- this.upfront[a];
+                        P = A/D
+                }
+                else {P = 0}
+
+                return  P;
+        },
+    "paymentDuration": 24, //months
+    "notes":["yay","boo","really boo"],
+    "answer" : Answer
+  },
 	 {
     "title" : "new-blah",
 		"question":"Which new thing do you want?",
@@ -93,7 +128,41 @@ var events = [
 		"paymentDuration": 36, //months
 		"notes":["yay","boo","really boo"],
     "answer" : Answer
-	}
+	},
+  {
+    "title" : "voterReg",
+    "question":"Do you register to vote??",
+    "answerOptions": [
+       { name : "first ans", value:  1},
+       { name : "second ans", value:  5},
+    "price": [0,0],
+    "getPrice": function(i){
+      return this.price[i];
+    },
+    "upfront": [0,0],
+    "interest": [0,0], //interest per year
+    "calculation":  function(a, t){
+        return a - 10;
+      },
+
+    "monthlyRepayment": // input: answer element, return monthly repayment
+        function(a){
+
+                if (this.interest[a] != 0) {
+                        i = this.interest[a]/12.;
+                        n = this.paymentDuration;
+                        D = (((1+i)**n)-1)/(i*(1+i)**n);
+                        A = this.price[a]- this.upfront[a];
+                        P = A/D
+                }
+                else {P = 0}
+
+                return  P;
+        },
+    "paymentDuration": 36, //months
+    "notes":["yes you registered!","not registering gives you poor credit rating"],
+    "answer" : Answer
+  },
 ];
 
 var outgoings = {
