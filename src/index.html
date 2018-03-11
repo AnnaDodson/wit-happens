@@ -1,36 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>LoaniPays</title>
-    <link rel="stylesheet" href="css/style.css"/>
-  </head>
-  <body>
-  	<h1>Hello WiT Happens</h1>
-    <p>do stuff here....</p>
-    <div id="home"></div>
-    <div id="journey">
-      <div id="stats-area">
-        <div class="stat">Month <span id="stat-day" class="stat-value"></span></div>
-        <div class="stat">Money Pot <span id="stat-distance" class="stat-value"></span></div>
-        <div class="stat">Credit Score <span id="stat-crew" class="stat-value"></span></div>
-      </div>
-      <div id="progress-area">
-        <img  src="images/bob.jpg" />
-        <img  src="images/trees.png" />
-      </div>
-    </div>
-
-    <div id="event"></div>
-    <script src="js/Event.js"></script>
-    <script src="js/Caravan.js"></script>
-    <script src="js/UI.js"></script>
-    <script src="js/Game.js"></script>
-  </body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,7 +61,7 @@
 }
 </style>
 </head>
-<body onload="myFunction()" style="margin:0;">
+<body style="margin:0;">
 
 <div id="loader"></div>
 
@@ -117,29 +84,18 @@
         <img class="bob" src="images/bob.png" />
         <img  src="images/progress.png" />
       </div>
-
-      <div class="scoreboard">
-        <p id="credit-score"></p>
-        <p id="total-spend"></p>
-      </div>
-
     </div>
 </div>
 
+<div style="display:none;" id="scoreboard" class="animate-bottom">
+   <div class="scoreboard">
+      <p id="credit-score"></p>
+      <p id="total-spend"></p>
+      <p id="total-in"></p>
+   </div>
+</div>
 
 
-
-<script>
-var myVar;
-
-function myFunction() {
-    myVar = setTimeout(showPage, 3000);
-}
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}
-</script>
 
 <script src="js/library/jquery-3.3.1.min.js"></script>
 <script src="js/game.js"></script>

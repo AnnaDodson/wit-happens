@@ -7,8 +7,14 @@ var score;
 
 function endGame(){
 console.log("Game end");
-  $('#scoreboard').show("show");
   $('#myDiv').hide("slow");
+
+  $('#credit-score').text(score.getScore());
+  $('#total-spend').text(money.getTotalSpend());
+  $('#total-in').text(money.getTotalIn());
+
+  $('#scoreboard').show("show");
+
 }
 
 //set scores
@@ -67,6 +73,12 @@ function gameStart() {
     score = new Score(0);
     updateMoneys();
     updateUI()
+
+    var showPage = setTimeout(function(){
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("myDiv").style.display = "block";
+    }, 1000);
+
     gameTimer = setInterval(function(){
        if(!isPaused) {
          gameTick();

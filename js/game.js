@@ -49,6 +49,8 @@ function Score(q){
 
 function Money(m){
   moneyTotalAmount = 0;
+  moneyTotalSpend = 0;
+  moneyTotalIn = 0;
   this.getMoney = function(){
     return moneyTotalAmount;
   };
@@ -57,6 +59,18 @@ function Money(m){
   };
   this.increaseMoney = function(m){
     moneyTotalAmount = moneyTotalAmount + m;
+  };
+  this.setTotalSpend = function(m){
+    moneyTotalSpend = moneyTotalSpend + m;
+  };
+  this.getTotalSpend = function(){
+    return moneyTotalSpend;
+  };
+  this.setTotalIn = function(m){
+    moneyTotalIn = moneyTotalIn + m;
+  };
+  this.getTotalIn = function(){
+    return moneyTotalIn;
   };
 };
 
@@ -116,8 +130,13 @@ function setChallenge(){
 }
 
 function updateMoneys(){
-  money.decreaseMoney(  getMonthlyOutgoings() + getMonthlyExtraCosts() );
-  money.increaseMoney( getMonthlyIncomings() + getExtraMonthlyIncome() );
+  var spent = getMonthlyOutgoings() + getMonthlyExtraCosts();
+  money.setTotalSpend(spent);
+  money.decreaseMoney(spent);
+
+  var moneyIn =  getMonthlyIncomings() + getExtraMonthlyIncome() ;
+  money.setTotalIn(moneyIn);
+  money.increaseMoney(moneyIn);
 }
 
 //Gets the answer obj and creates it
