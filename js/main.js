@@ -6,8 +6,9 @@ var score;
 
 
 function endGame(){
-  $('#game-board').show("show");
-  $('#score-board').show("slow");
+console.log("Game end");
+  $('#scoreboard').show("show");
+  $('#myDiv').hide("slow");
 }
 
 //set scores
