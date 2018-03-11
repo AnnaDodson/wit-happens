@@ -41,5 +41,4 @@ function onAnswer(ans){
   //resume the tick
 }
 
-//gameStart();
-gameTestStart();
+gameStart();
