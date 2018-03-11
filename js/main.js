@@ -14,7 +14,7 @@ function setAnswersUI(a){
   $('#answers').empty();
   var output = "";
   for (var i = 0; i < a.length; i++){
-    var html = "<input type='radio' name='answer' value='" + a[i] + "'>" + a[i] + "<br>";
+    var html = "<span><input type='radio' name='answer' data-id='" + i + "' value='" + a[i].name + "'>" + a[i].name + "</span>";
     output = output + html;
   }
   $('#answers').append(output);
@@ -22,7 +22,7 @@ function setAnswersUI(a){
 
 //get user input
 $('#answers').change(function(){
-  var value =  $("input[name='answer']:checked").val();
+  var value =  $("input[name='answer']:checked").attr("data-id");
   console.log(value);
 });
 
@@ -73,6 +73,6 @@ $(function() {
 
 $(document).ready(function(){
   setQuestionUI();
-  setAnswersUI(["one", "two", "three"]);
+  setAnswersUI([ { name : "one"},{ name: "two"},{ name : "three" } ]);
 });
 //gameStart();
