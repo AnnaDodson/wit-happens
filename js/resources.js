@@ -95,22 +95,23 @@ var events = [
     "notes":["yay","boo","really boo"],
     "answer" : Answer
   },
-	 {
-    "title" : "new-blah ",
-		"question":"Which new thing do you want?",
-		"answerOptions": [
-       { name : "first ans", value:  1},
-       { name : "second ans", value:  5},
-       { name : "third ans", value:  10}],
-		"price": [1000,5000,10000],
-		"getPrice": function(i){
+   {
+    "title" : "night-out",
+    "question":"You're short of money this month, but you really want to go out and have fun with your mates. What do you do?",
+    "prompt" : "Oh, shame about your boiler breaking down. See you at the big night out on Saturday!",
+    "answerOptions": [
+       { name : "A. Skip the big night out, you'll see them all again the week after.", value:  1},
+       { name : "B. Go out and delay paying your mobile bill again.", value:  5},
+       { name : "C. Go out and use your credit card, hoping it won't max out.", value:  10}],
+    "price": [0,0,0],
+    "getPrice": function(i){
       return this.price[i];
     },
-		"upfront": [1000,0,0],
-		"interest": [0,0.05,0.1], //interest per year
-		"calculation":	function(a, t){
-				return a - 10;
-			},
+    "upfront": [0,0,0],
+    "interest": [0,0,0], //interest per year
+    "calculation":  function(a, t){
+        return a - 10;
+      },
 
     "monthlyRepayment": // input: answer element, return monthly repayment
         function(a){
@@ -126,10 +127,10 @@ var events = [
 
                 return  P;
         },
-		"paymentDuration": 36, //months
-		"notes":["yay","boo","really boo"],
+    "paymentDuration": 36, //months
+    "notes":["Well done!","Bad, missing payments is bad for your credit score","Bad, reaching your credit limit is very bad!"],
     "answer" : Answer
-	},
+  },
 
 
 	 {
@@ -170,13 +171,13 @@ var events = [
 	},
 
 	 {
-    "title" : "night-out",
-		"question":"You're short of money this month, but you really want to go out and have fun with your mates. What do you do?",
-		"prompt" : "Oh, shame about your boiler breaking down. See you at the big night out on Saturday!",
+    "title" : "holiday",
+		"question":"You really want at least one holiday this year. What do you do?",
+		"prompt" : "Oh, we're going to the Bahamas later this year, it's our third holiday this year.",
 		"answerOptions": [
-       { name : "A. Skip the big night out, you'll see them all again the week after.", value:  1},
-       { name : "B. Go out and delay paying your mobile bill again.", value:  5},
-       { name : "C. Go out and use your credit card, hoping it won't max out.", value:  10}],
+       { name : "A. Cut back on eating out and save for a holiday before you book it", value:  1},
+       { name : "B. Get a new credit card and book your holiday. You already have 3, one more should be fine.", value:  5},
+       { name : "C. Use your existing credit card, hoping it won't max out.", value:  10}],
 		"price": [0,0,0],
 		"getPrice": function(i){
       return this.price[i];
@@ -202,7 +203,7 @@ var events = [
                 return  P;
         },
 		"paymentDuration": 36, //months
-		"notes":["Well done!","Bad, missing payments is bad for your credit score","Bad, reaching your credit limit is very bad!"],
+		"notes":["Well done!","Bad, too many credit cards","Bad, reaching your credit limit is very bad!"],
     "answer" : Answer
 	},
   {
